@@ -3,8 +3,9 @@ import os
 import sys
 #from scipy import spatial
 
-f1 = open('Full_handheld_Feat_Orig.txt','r')
-f2 = open('Full_handheld_Feat_Orig_Averaged.txt','w')
+fold = sys.argv[1]
+f1 = open(fold+'/pasc_control_feat.txt','r')
+f2 = open(fold+'/pasc_control_feat_Averaged.txt','w')
 
 feat_len = 4096  # length of feature vector (4096 for VGG fc7)
 prev_cls = 0

@@ -3,18 +3,17 @@ import os
 import sys
 from scipy import spatial
 
-f3 = open('C:/Users/Sandipan/Desktop/NDFaceNet_New/PaSC_Old_Vito/CMC_Control_Front.txt','a')
-
-#f1 = open('/scratch365/sbanerj1/PaSC_2DAligned/PaSC_handheld_Feat/Full_handheld_Feat_Averaged.txt','r')
-f1 = open('Full_handheld_Feat_Orig_Averaged.txt','r')
-#f2 = open('/scratch365/sbanerj1/PaSC_2DAligned/PaSC_handheld_Feat/Full_handheld_CosSim1.txt','w')
-f2 = open('Full_handheld_CosSim_sym.txt','w')
+fold = sys.argv[1]
+f3 = open(fold+'/CMC_control.txt','a')
+f1 = open(fold+'/pasc_control_feat_PreVGG.txt','r')
+f2 = open(fold+'/CosSim_sym.txt','w')
 
 name_list = []
 feat_list = []
-name = 'Orig'
-
+name = sys.argv[2]
+cnt = 0
 for line in f1:
+	cnt += 1
 	fl = line.split(',')
 	name_list.append(fl[0])
 	temp_list = []
@@ -35,7 +34,7 @@ score1 = 0
 score5 = 0
 score10 = 0
 score_F = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-vid = 1145.0
+vid = float(cnt)
 cnt = 0
 for i in range(0,len(name_list)):
 	cls = name_list[i].split('d')[0]
